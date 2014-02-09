@@ -1,0 +1,673 @@
+message ChatMessage {
+   optional string user = 1;
+   optional int32 channel = 2 [default = 0];
+   optional string msg = 3;
+   optional int64 time = 4 [default = 0];
+}
+message ChatMsgs {
+   repeated ChatMessage msgs = 1;
+   optional int64 time = 2 [default = 0];
+}
+
+
+message ChatResponse {
+   optional int64 time = 1 [default = 0];
+}
+
+
+message SendChatCmd {
+   optional int32 channel = 1 [default = 0];
+   optional string msg = 2;
+   optional string target = 3;
+}
+
+
+message GetChatCmd {
+   optional int64 since = 1 [default = 0];
+}
+
+
+message MoveInfo {
+   optional string user = 1;
+   optional PositionInfo pos = 2;
+}
+message PositionInfo {
+   optional float x = 1 [default = 0];
+   optional float y = 2 [default = 0];
+   optional float z = 3 [default = 0];
+}
+
+
+message CityPlayerInfo {
+   optional PlayerData data = 1;
+   optional PositionInfo pos = 2;
+}
+message CityUsers {
+   repeated CityPlayerInfo users = 1;
+}
+message Item {
+   optional int32 ID = 1 [default = 0];
+   optional int32 Base = 2 [default = 0];
+   optional int32 Num = 3 [default = 0];
+   repeated KeyValuePair_String_SmartInt Attrib = 4;
+}
+message KeyValuePair_String_Item {
+   optional string Key = 1;
+   optional Item Value = 2;
+}
+message KeyValuePair_String_SmartInt {
+   optional string Key = 1;
+   optional int32 Value = 2;
+}
+message MainAttrib {
+   optional string Name = 1;
+   optional int32 Role = 2 [default = 0];
+   optional int32 Level = 3 [default = 0];
+   optional int32 Gold = 4 [default = 0];
+   optional int32 CostGold = 5 [default = 0];
+   optional int32 TotalGold = 6 [default = 0];
+   optional int32 Gem = 7 [default = 0];
+   optional int32 CostGem = 8 [default = 0];
+   optional int32 TotalGem = 9 [default = 0];
+   optional int32 Battle = 10 [default = 0];
+   optional int32 CurHP = 11 [default = 0];
+   optional int32 CurExp = 12 [default = 0];
+   optional int32 CurAbility = 13 [default = 0];
+   optional int32 CurSoul = 14 [default = 0];
+   optional int32 NextExp = 15 [default = 0];
+   optional int32 Exp = 16 [default = 0];
+   optional int32 HPMax = 17 [default = 0];
+   optional int32 HPRestore = 18 [default = 0];
+   optional int32 SoulMax = 19 [default = 0];
+   optional int32 SoulRestore = 20 [default = 0];
+   optional int32 Damage = 21 [default = 0];
+   optional int32 Defense = 22 [default = 0];
+   optional int32 SpecialDamage = 23 [default = 0];
+   optional int32 SpecialDefense = 24 [default = 0];
+   optional int32 Critical = 25 [default = 0];
+   optional int32 Tough = 26 [default = 0];
+   optional int32 Hit = 27 [default = 0];
+   optional int32 Block = 28 [default = 0];
+   optional int32 MoveSpeed = 29 [default = 0];
+   optional int32 FastRate = 30 [default = 0];
+   optional int32 StiffAdd = 31 [default = 0];
+   optional int32 StiffSub = 32 [default = 0];
+   optional int32 AbilityMax = 33 [default = 0];
+   optional int32 AbHitAdd = 34 [default = 0];
+   optional int32 AbRestore = 35 [default = 0];
+   optional int32 AbUseAdd = 36 [default = 0];
+   optional int32 Progress = 37 [default = 0];
+   optional int32 SP = 38 [default = 0];
+   optional int32 PvpExp = 39 [default = 0];
+   optional int32 PvpLevel = 40 [default = 0];
+   optional int32 NewGuide = 41 [default = 0];
+}
+message Package {
+   repeated KeyValuePair_String_Item Items = 1;
+   optional int32 Pages = 2 [default = 0];
+}
+message Packages {
+   optional Package BackPack = 1;
+   optional Package SkillPack = 2;
+}
+message PlayerData {
+   optional MainAttrib Attrib = 1;
+   optional Packages Packages = 2;
+}
+
+message GetCityUsersCmd {
+}
+
+
+message MoveCmd {
+   optional float x = 1 [default = 0];
+   optional float y = 2 [default = 0];
+   optional float z = 3 [default = 0];
+}
+
+
+message FriendInfo {
+   optional string name = 1;
+   optional int32 role = 2 [default = 0];
+   optional bool online = 3 [default = false];
+}
+
+
+message FriendList {
+   repeated FriendInfo friends = 1;
+}
+
+
+message GetFriendsCmd {
+}
+
+
+message AddFriendCmd {
+   optional string friend = 1;
+}
+
+
+message DeleteFriendCmd {
+   optional string friend = 1;
+}
+
+
+message ICommand {
+}
+
+
+message EquipCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message UnEquipCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message CombineCmd {
+   optional int32 id = 1 [default = 0];
+   optional int32 time = 2 [default = 1];
+}
+
+
+message StrengthenCmd {
+   optional int32 equip = 1 [default = 0];
+   optional int32 stone = 2 [default = 0];
+}
+
+
+message UseItemCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message KeyValuePair_String_Int32 {
+   optional string Key = 1;
+   optional int32 Value = 2;
+}
+
+
+message UseItemData {
+   optional int32 Gold = 1 [default = 0];
+   optional int32 Gem = 2 [default = 0];
+   optional int32 Exp = 3 [default = 0];
+   optional int32 SP = 4 [default = 0];
+   optional int32 Strength = 5 [default = 0];
+   repeated KeyValuePair_String_Int32 Items = 6;
+}
+
+
+message EquipPropsCmd {
+   optional int32 id = 1 [default = 0];
+   optional int32 slot = 2 [default = 0];
+}
+
+
+message KeyValuePair_String_PveData {
+   optional string Key = 1;
+   optional PveData Value = 2;
+}
+message PveData {
+   optional int32 PassCount = 1 [default = 0];
+   optional int32 MaxScore = 2 [default = 0];
+   optional int32 LastScore = 3 [default = 0];
+   optional int64 Time = 4 [default = 0];
+}
+
+
+message PveInfo {
+   repeated KeyValuePair_String_PveData Levels = 1;
+}
+
+
+message ReviveInfo {
+   optional int32 Count = 1 [default = 0];
+}
+
+
+message EnterLevelCmd {
+   optional int32 level = 1 [default = 0];
+}
+
+
+message OpenCellCmd {
+   optional int32 type = 1 [default = 0];
+}
+
+
+message LeaveLevelCmd {
+}
+
+
+message FinishLevelCmd {
+   optional int32 score = 1 [default = 0];
+   optional int32 gold = 2 [default = 0];
+   optional int32 exp = 3 [default = 0];
+   repeated PickData drops = 4;
+}
+message PickData {
+   optional int32 id = 1 [default = 0];
+   optional int32 num = 2 [default = 0];
+}
+
+
+message ReviveInfoCmd {
+}
+
+
+message ReviveCmd {
+}
+
+
+message GetPveInfoCmd {
+}
+
+
+message GetTurntableDataCmd {
+}
+
+
+message FetchTurntableRewardCmd {
+}
+
+
+message GetMailResponse {
+   optional int32 total = 1 [default = 0];
+   optional int32 page = 2 [default = 0];
+   repeated Mail mails = 3;
+}
+message Mail {
+   optional string title = 1;
+   optional string sender = 2;
+   optional string content = 3;
+   optional int32 item = 4 [default = 0];
+   optional int32 gold = 5 [default = 0];
+   optional int32 gem = 6 [default = 0];
+   optional int64 time = 7 [default = 0];
+   optional bool attach = 8 [default = false];
+   optional int32 flag = 9 [default = 0];
+}
+
+
+message GetMailsCmd {
+   optional int32 page = 1 [default = 0];
+   optional int32 size = 2 [default = 0];
+}
+
+
+message ReadMailCmd {
+   optional int32 mail = 1 [default = 0];
+}
+
+
+message FetchAttachCmd {
+   optional int32 mail = 1 [default = 0];
+}
+
+
+message DeleteMailCmd {
+   optional int32 mail = 1 [default = 0];
+}
+
+
+message SendMailCmd {
+   optional string to = 1;
+   optional string title = 2;
+   optional string content = 3;
+}
+
+
+message GetBackPackCmd {
+}
+
+
+message GetSkillPackCmd {
+}
+
+
+message BuyPackagePageCmd {
+}
+
+
+message PvpData {
+   optional string server = 1;
+   optional int32 game = 2 [default = 0];
+   optional int32 pass = 3 [default = 0];
+   optional int32 map = 4 [default = 0];
+   optional int32 timeout = 5 [default = 0];
+   repeated PlayerData users = 6;
+}
+
+
+message PvpInfo {
+   optional int32 PvpLevel = 1 [default = 0];
+   optional int32 PvpExp = 2 [default = 0];
+   optional int32 TotalCount = 3 [default = 0];
+   optional int32 WinCount = 4 [default = 0];
+   optional int32 KeepWin = 5 [default = 0];
+}
+
+
+message PvpFinish {
+   repeated PvpFinishData datas = 1;
+}
+message PvpFinishData {
+   optional string user = 1;
+   optional int32 result = 2 [default = 0];
+   optional int32 team = 3 [default = 0];
+   optional int32 sp = 4 [default = 0];
+   optional int32 exp = 5 [default = 0];
+}
+
+
+message JoinPvpCmd {
+}
+
+
+message LeavePvpCmd {
+}
+
+
+message FinishPvpCmd {
+   optional int32 result = 1 [default = 0];
+}
+
+
+message GetPvpInfoCmd {
+}
+
+
+message QuestList {
+   repeated int32 quests = 1;
+}
+
+
+message GetQuestListCmd {
+}
+
+
+message FetchQuestRewardCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message RequestCmd {
+}
+
+
+enum ERequestTypes {
+   EAddFriendCmd = 0;
+   EBatchSellCmd = 1;
+   EBuyCmd = 2;
+   EBuyPackagePageCmd = 3;
+   EBuyStrengthCmd = 4;
+   ECombineCmd = 5;
+   ECreateUserCmd = 6;
+   EDeleteFriendCmd = 7;
+   EDeleteMailCmd = 8;
+   EDeleteUserCmd = 9;
+   EEnterGameCmd = 10;
+   EEnterLevelCmd = 11;
+   EEquipCmd = 12;
+   EEquipPropsCmd = 13;
+   EFetchAttachCmd = 14;
+   EFetchQuestRewardCmd = 15;
+   EFinishLevelCmd = 16;
+   EFinishPvpCmd = 17;
+   EGetBackPackCmd = 18;
+   EGetChatCmd = 19;
+   EGetCityUsersCmd = 20;
+   EGetFriendsCmd = 21;
+   EGetMailsCmd = 22;
+   EGetPveInfoCmd = 23;
+   EGetPvpInfoCmd = 24;
+   EGetQuestListCmd = 25;
+   EGetSkillPackCmd = 26;
+   EGetStrengthCmd = 27;
+   EGetTopListCmd = 28;
+   EGetUserAttribCmd = 29;
+   EGetUserDataCmd = 30;
+   EJoinPvpCmd = 31;
+   ELeaveGameCmd = 32;
+   ELeaveLevelCmd = 33;
+   ELeavePvpCmd = 34;
+   ELoginCmd = 35;
+   EMoveCmd = 36;
+   EOpenCellCmd = 37;
+   EReadMailCmd = 38;
+   EReLoginCmd = 39;
+   ERequestCmd = 40;
+   EReviveCmd = 41;
+   EReviveInfoCmd = 42;
+   ESellCmd = 43;
+   ESendChatCmd = 44;
+   ESendMailCmd = 45;
+   EServerTestRequest = 46;
+   ESkillAddRuneCmd = 47;
+   ESkillBuySlotCmd = 48;
+   ESkillEquipCmd = 49;
+   ESkillLearnCmd = 50;
+   ESkillUpgradeCmd = 51;
+   EStrengthenCmd = 52;
+   EUnEquipCmd = 53;
+   EUseItemCmd = 54;
+   EGetLoginInfoCmd = 55;
+   ERechargeCmd = 56;
+   ESignInCmd = 57;
+   EFinishNewGuideCmd = 58;
+   EExchangeCmd = 59;
+   EFetchTurntableRewardCmd = 60;
+   EGetTurntableDataCmd = 61;
+   EMax = 62;
+}
+message RequestMessage {
+   optional ERequestTypes Type = 1 [default = EAddFriendCmd];
+}
+
+
+message ServerTestRequest {
+   optional bytes Data = 1;
+}
+
+
+message Response {
+   optional string error = 1;
+   optional string data = 2;
+   optional int32 id = 3 [default = 0];
+}
+
+
+message BuyCmd {
+   optional int32 id = 1 [default = 0];
+   optional bool use = 2 [default = false];
+}
+
+
+message SellCmd {
+   optional int32 id = 1 [default = 0];
+   optional int32 count = 2 [default = 0];
+}
+
+
+message BatchSellCmd {
+   repeated int32 ids = 1;
+}
+
+
+message RechargeCmd {
+   optional string receipt = 1;
+}
+
+
+message ExchangeCmd {
+   optional string product = 1;
+}
+
+
+message SkillLearnCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message SkillUpgradeCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message SkillEquipCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message SkillBuySlotCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message SkillAddRuneCmd {
+   optional int32 id = 1 [default = 0];
+   optional int32 rune = 2 [default = 0];
+   optional int32 slot = 3 [default = 0];
+}
+
+
+message GetTopListResponse {
+   optional int32 page = 1 [default = 0];
+   optional int32 rank = 2 [default = 0];
+   optional int32 total = 3 [default = 0];
+   repeated TopListItem list = 4;
+}
+message TopListAttrib {
+   optional string Name = 1;
+   optional int32 Role = 2 [default = 0];
+   optional int32 Level = 3 [default = 0];
+   optional int32 CurExp = 4 [default = 0];
+   optional int32 TotalGold = 5 [default = 0];
+   optional int32 Battle = 6 [default = 0];
+   optional int32 Progress = 7 [default = 0];
+   optional int32 PvpLevel = 8 [default = 0];
+   optional int32 PvpExp = 9 [default = 0];
+}
+message TopListItem {
+   optional TopListAttrib Attrib = 1;
+}
+
+
+message GetTopListCmd {
+   optional string type = 1;
+   optional int32 page = 2 [default = 0];
+   optional int32 size = 3 [default = 0];
+}
+
+
+message RoleList {
+   repeated MainAttrib users = 1;
+}
+
+
+message StrengthInfo {
+   optional int32 value = 1 [default = 0];
+   optional int32 time = 2 [default = 0];
+}
+
+
+message ReLoginCmd {
+   optional string id = 1;
+   optional string user = 2;
+}
+
+
+message LoginCmd {
+   optional string id = 1;
+}
+
+
+message CreateUserCmd {
+   optional string user = 1;
+   optional int32 role = 2 [default = 0];
+}
+
+
+message DeleteUserCmd {
+   optional string user = 1;
+}
+
+
+message EnterGameCmd {
+   optional string user = 1;
+}
+
+
+message LeaveGameCmd {
+   optional string user = 1;
+}
+
+
+message GetUserAttribCmd {
+}
+
+
+message GetUserDataCmd {
+   optional string user = 1;
+   optional bool all_attrib = 2 [default = false];
+}
+
+
+message GetStrengthCmd {
+}
+
+
+message BuyStrengthCmd {
+}
+
+
+message GetLoginInfoCmd {
+}
+
+
+message LoginInfo {
+   optional int32 SignInCount = 1 [default = 0];
+   optional string LastLoginIp = 2;
+   optional bool CanSignIn = 3 [default = false];
+}
+
+
+message SignInCmd {
+}
+
+
+message FinishNewGuideCmd {
+   optional int32 id = 1 [default = 0];
+}
+
+
+message LevelData {
+   optional LevelInfo Info = 1;
+   optional LevelProfit Profit = 2;
+}
+message LevelInfo {
+   optional int32 ID = 1 [default = 0];
+   optional int32 WayLength = 2 [default = 0];
+   optional int32 ExtraWay = 3 [default = 0];
+   optional int32 GeniusNum = 4 [default = 0];
+   optional int32 ExtraNum = 5 [default = 0];
+   repeated int32 Normal1 = 6;
+   repeated int32 Normal2 = 7;
+   repeated int32 Genius = 8;
+   repeated int32 Boss = 9;
+   repeated int32 Extra = 10;
+   repeated string Triggers = 11;
+}
+message LevelProfit {
+   optional int32 Gold = 1 [default = 0];
+   optional int32 Exp = 2 [default = 0];
+   optional int32 Soul = 3 [default = 0];
+   optional int32 SP = 4 [default = 0];
+}
+
+
+message DropInfo {
+   repeated KeyValuePair_String_Int32 drops = 1;
+}

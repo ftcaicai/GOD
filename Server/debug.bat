@@ -1,0 +1,1 @@
+.\\nodejs\\node.exe --debug-brk main.js

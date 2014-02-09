@@ -1,0 +1,23 @@
+{
+    "AppSecret" : "B1C047BD-8FAA-420b-B941-5C65C32117B8",
+    "Http": { "Port": 3069 },
+    "Servers": "http://mobile.frozenpeak.net/server_list.txt",
+    "Database": {
+        "IP": "127.0.0.1",
+        "Port": 3066,
+        "DB": "projectx",
+        "User": "ftcc",
+        "Password": "1234",
+        "Param": { "auto_reconnect": true }
+    },
+    "GM": {
+        "AllowIp": ["127.0.0.1"]
+    },
+    "PVP": {
+        "Server": ["ws://god.sincegame.com:4069"],
+        "Map": [1000]
+    },
+    "Publish": false,
+    "LogFile": "log/node.log",
+    "Background": false
+}
